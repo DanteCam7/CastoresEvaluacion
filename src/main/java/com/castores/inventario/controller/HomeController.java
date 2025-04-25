@@ -8,6 +8,6 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home() {
-        return "home"; // Retorna la vista "home"
+        return "home"; 
     }
 }

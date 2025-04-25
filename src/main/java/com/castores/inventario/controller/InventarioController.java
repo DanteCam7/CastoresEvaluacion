@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class InventarioController {
 
-    @Autowired // Inyectar ProductoService
+    @Autowired
     private ProductoService productoService;
 
     @GetMapping("/inventario")

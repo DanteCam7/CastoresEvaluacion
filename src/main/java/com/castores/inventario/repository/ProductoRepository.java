@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-@Repository // Asegúrate de que esta anotación esté presente
+@Repository
 public interface ProductoRepository extends JpaRepository<Producto, Integer> {
 
     @Query("SELECT p FROM Producto p WHERE p.estatus = :estatus")
