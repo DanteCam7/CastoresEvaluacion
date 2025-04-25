@@ -1,0 +1,39 @@
+IDE UTILIZADO: VS Code
+JDK : 21
+SPRINGBOOT: 3.4.4
+MAVEN: 3.9.9
+DBMS: MYSQL WORKBENCH 8.0.42
+
+PASOS PARA CORRE LA WEB-APP:
+********* LINK A VIDEO-TUTORIAL AL FINAL ***************
+1.- CREACION BD
+    1.- Instalar MySQL
+    *SI NO SE AJUSTA NINGUN CAMPO DENTRO DEL PROGRAMA
+    *2.- Crear usuario=sa, password=sql-123 en MySQL
+    2.- Crear Base de datos con el script
+
+2.- OPCION 1 (SI NO SE CREÓ USUARIO "sa")
+        EJECUCION PROGRAMA(POSIBLE AJUSTE EN CAMPOS)
+        1.- Abrir la carpeta en VSCODE
+        2.- Acceder a "src\main\resources\application.properties"
+        3.- Cambiar los campos "spring.datasource.username=" y "spring.datasource.password=" a los suyos
+        4.- Guardamos cambios
+        5.- Ejecutar InventarioApplication.java
+        6.- Abrir Navegador de su preferencia y en la barra de búsqueda insertar "localhost:8081/login"
+
+    OPCION 2 (SI SE CREÓ EL USUARIO "sa")
+        1.- Ejecutar el archivo en "target\inventario-0.0.1-SNAPSHOT.jar"        
+        2.- Abrir Navegador de su preferencia y en la barra de búsqueda insertar "localhost:8081/login"
+
+USUARIOS DE PRUEBA:
+ADMINISTRADOR               ALMACENISTA
+user: admin@example.com     user: alma@example.com
+password: 1234              password: 12345
+
+***LINK VIDEO-DEMOSTRACION: https://drive.google.com/file/d/1ATv4OPvrEuYdoP4qgmEADty6W0jwiL9q/view?usp=drive_link ***
+
+
+
+********* LINK A VIDEO-TUTORIAL ***************
+https://drive.google.com/file/d/1Qn3ikl0w6VLjhR9M942BdcVKBpJ7bMgy/view?usp=sharing
+********* LINK A VIDEO-TUTORIAL ***************

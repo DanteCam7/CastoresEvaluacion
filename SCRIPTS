@@ -1,0 +1,58 @@
+-- **********************NOTA*************************
+-- INSERTS AL FINAL DEL DOCUMENTO
+-- **********************NOTA*************************
+CREATE DATABASE inventario;
+USE inventario;
+-- drop database inventario2
+
+-- Tabla de roles
+CREATE TABLE roles (
+    id_rol INT(2) PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL
+);
+
+INSERT INTO roles (id_rol, nombre) VALUES 
+(1, 'Administrador'),
+(2, 'Almacenista');
+
+-- Tabla de usuarios (ya existente según el escenario)
+CREATE TABLE usuarios (
+    id_usuario INT(6) PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(50) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL, -- Aumentado para hashing
+    id_rol INT(2),
+    estatus INT(1) DEFAULT 1, -- 1: Activo, 0: Inactivo
+    FOREIGN KEY (id_rol) REFERENCES roles(id_rol)
+);
+
+-- Tabla de productos
+CREATE TABLE productos (
+    id_producto INT(6) PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(40) NOT NULL,
+    cantidad INT(6) NOT NULL DEFAULT 0,
+    estatus TINYINT(1) NOT NULL DEFAULT 1 -- 1: Activo, 0: Inactivo
+);
+
+-- Tabla de movimientos (historial)
+CREATE TABLE movimientos (
+    id_movimiento INT(6) PRIMARY KEY AUTO_INCREMENT,
+    id_producto INT(6),
+    tipo ENUM('entrada', 'salida') NOT NULL,
+    cantidad INT(6) NOT NULL,
+    id_usuario INT(6),
+    fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto),
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
+);
+
+
+-- NOTA*************************
+-- EN CASO DE QUERER INSERTAR LOS DATOS QUE USÉ PARA PRUEBAS
+-- REALIZAR LOS INSERT EN EL ORDEN EN EL QUE VIENEN.
+
+INSERT INTO `productos` VALUES (1,'Coca-Cola',22032,0),(2,'Pepsi',16,0),(3,'Peñafiel',58,0),(4,'Pepso',2,1),(5,'Totis',11,0),(6,'Chips',6,1),(7,'pepitas',9,0),(8,'Pepso2',8,1),(9,'Prueba',0,1),(10,'Probando CSS',4,1),(11,'Dante Camacho Ibarra',6,1),(12,'sdgsdfg',0,1);
+
+INSERT INTO `usuarios` VALUES (1,'admin','admin@example.com','1234',1,1),(2,'almacenista','alma@example.com','12345',2,1);
+
+INSERT INTO `movimientos` VALUES (1,2,'entrada',15,1,NULL),(2,3,'entrada',1,1,NULL),(3,4,'entrada',6,1,'2025-04-24 19:38:48'),(4,5,'entrada',0,1,'2025-04-24 19:46:20'),(5,5,'entrada',3,1,'2025-04-24 19:52:24'),(6,5,'entrada',2,1,'2025-04-24 19:53:02'),(7,6,'entrada',0,1,'2025-04-24 19:53:24'),(8,1,'entrada',1,1,'2025-04-24 20:06:24'),(9,7,'entrada',0,1,'2025-04-24 20:06:33'),(10,8,'entrada',0,1,'2025-04-24 20:07:38'),(11,8,'entrada',3,1,'2025-04-24 20:07:42'),(12,3,'salida',1,2,'2025-04-25 11:44:57'),(13,4,'salida',3,2,'2025-04-25 11:45:02'),(14,4,'salida',1,2,'2025-04-25 12:32:00'),(15,5,'salida',1,2,'2025-04-25 13:12:41'),(16,4,'salida',2,2,'2025-04-25 13:13:47'),(17,3,'entrada',7,1,'2025-04-25 13:15:51'),(18,4,'entrada',4,1,'2025-04-25 13:15:54'),(19,5,'entrada',7,1,'2025-04-25 13:15:56'),(20,6,'entrada',6,1,'2025-04-25 13:15:58'),(21,7,'entrada',9,1,'2025-04-25 13:16:00'),(22,8,'entrada',5,1,'2025-04-25 13:16:01'),(23,1,'salida',31,2,'2025-04-25 13:16:31'),(24,1,'salida',2500,2,'2025-04-25 13:16:45'),(25,2,'entrada',1,1,'2025-04-25 14:20:12'),(26,3,'entrada',51,1,'2025-04-25 14:20:35'),(27,9,'entrada',0,1,'2025-04-25 14:54:10'),(28,1,'entrada',3,1,'2025-04-25 14:55:40'),(29,1,'salida',52,2,'2025-04-25 14:57:55'),(30,1,'entrada',0,1,'2025-04-25 15:12:58'),(31,10,'entrada',0,1,'2025-04-25 16:16:15'),(32,10,'entrada',4,1,'2025-04-25 16:16:18'),(33,1,'salida',10,2,'2025-04-25 16:16:54'),(34,1,'salida',1,2,'2025-04-25 16:17:03'),(35,11,'entrada',0,1,'2025-04-25 16:31:03'),(36,11,'entrada',6,1,'2025-04-25 16:31:08'),(37,1,'salida',26,2,'2025-04-25 16:35:40'),(38,1,'salida',15,2,'2025-04-25 16:39:33'),(39,1,'entrada',4,1,'2025-04-25 18:37:37'),(40,12,'entrada',0,1,'2025-04-25 18:37:57'),(41,4,'salida',2,2,'2025-04-25 18:38:16');
