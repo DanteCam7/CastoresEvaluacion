@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agregar Producto</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Vinculación del archivo CSS -->
+</head>
+<body>
+  <h1>Agregar Nuevo Producto</h1>
+
+  <!-- Mostrar mensaje de error si existe -->
+  <div th:if="${param.error}" class="error-message">
+    [[${param.error}]]
+  </div>
+
+  <!-- Formulario para agregar un producto -->
+  <form th:action="@{/producto/guardar}" method="post" class="update-form">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required />
+    <button type="submit" class="button-42">Guardar Producto</button>
+  </form>
+
+  <!-- Botón para regresar al inventario -->
+  <a href="/inventario" class="button-87">Regresar al Inventario</a>
+</body>
+</html>

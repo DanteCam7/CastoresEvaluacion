@@ -1,0 +1,158 @@
+/* Tema Oscuro */
+body {
+    background-color: #121212; /* Fondo oscuro */
+    color: #e0e0e0; /* Texto claro */
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+    text-align: center; /* Títulos en blanco */
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #1e1e1e; /* Fondo de la tabla */
+    color: #e0e0e0; /* Texto de la tabla */
+    margin-top: 20px; /* Espacio entre los botones y la tabla */
+  }
+  
+  th, td {
+    border: 1px solid #333; /* Borde más oscuro */
+    padding: 8px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #333; /* Encabezados de la tabla */
+    color: #ffffff; /* Texto blanco para encabezados */
+  }
+  
+  a {
+    color: #bb86fc; /* Enlaces en color morado claro */
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .error-message {
+    color: #cf6679; /* Mensajes de error en tono rojo claro */
+    margin-bottom: 15px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .green {
+    color: green;
+  }
+  
+  .red {
+    color: red;
+  }
+  
+  /* Contenedor principal de botones */
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Espacio entre los botones y el título */
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+  }
+  
+  .logout-button {
+    margin-left: auto; /* Mueve el botón "Cerrar Sesión" al lado derecho */
+  }
+  
+  /* Diseño del botón principal */
+  .button-87 {
+    margin: 10px;
+    padding: 15px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: inline-block;
+    border: 0px;
+    font-weight: 700;
+    box-shadow: 0px 0px 14px -7px #f09819;
+    background-image: linear-gradient(45deg, #FF512F 0%, #F09819 51%, #FF512F 100%);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-87:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .button-87:active {
+    transform: scale(0.95);
+  }
+  
+  /* Diseño del botón secundario (Actualizar y Dar de Baja) */
+  .button-42 {
+    background-color: initial;
+    background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter, -apple-system, system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
+    height: 40px;
+    line-height: 40px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    pointer-events: auto;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: top;
+    white-space: nowrap;
+    width: auto;
+    z-index: 9;
+    border: 0;
+    transition: box-shadow 0.2s;
+  }
+  
+  .button-42:hover {
+    box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+  }
+  
+  /* Alineación del campo de entrada y el botón "Actualizar" */
+  .update-form {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: center;
+    gap: 10px; /* Espacio entre el campo de entrada y el botón */
+  }
+  
+  .update-form input[type="number"] {
+    width: 80px; /* Ancho del campo de entrada */
+    height: 40px; /* Altura del campo de entrada (igual que el botón) */
+    text-align: center; /* Centra el texto dentro del campo */
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 6px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 5px; /* Espaciado interno */
+    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: center;
+  }

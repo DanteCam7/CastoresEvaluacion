@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Sencillo</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Vinculación del archivo CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212; /* Fondo oscuro */
+      color: #ffffff; /* Texto claro */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: #1e1e1e; /* Fondo del contenedor oscuro */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+      padding: 25px;
+      width: 350px;
+      text-align: center;
+    }
+
+    .login-container h2 {
+      margin-top: 0;
+      font-size: 24px;
+      color: #ffffff; /* Título en blanco */
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #bdc3c7; /* Etiquetas en gris claro */
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #444; /* Borde oscuro */
+      border-radius: 5px;
+      background-color: #2d2d2d; /* Fondo de los inputs oscuro */
+      color: #ffffff; /* Texto claro dentro de los inputs */
+    }
+
+    .form-group input[type="text"]:focus,
+    .form-group input[type="password"]:focus {
+      border-color: #00bcd4; /* Resaltado azul al hacer foco */
+      outline: none;
+    }
+
+    .form-group button {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-image: linear-gradient(45deg, #FF512F 0%, #F09819 51%, #FF512F 100%);
+      color: #ffffff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-position 0.5s ease, transform 0.2s ease;
+      background-size: 200% auto;
+    }
+
+    .form-group button:hover {
+      background-position: right center;
+    }
+
+    .form-group button:active {
+      transform: scale(0.95);
+    }
+
+    .error-message {
+      color: #ff5252; /* Color rojo para errores */
+      margin-bottom: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+
+    <!-- Mostrar mensaje de error -->
+    <div th:if="${error}" class="error-message">
+      [[${error}]]
+    </div>
+
+    <form action="/login" method="post">
+      <div class="form-group">
+        <label for="correo">Correo:</label>
+        <input type="text" id="correo" name="correo" required>
+      </div>
+
+      <div class="form-group">
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required>
+      </div>
+
+      <div class="form-group">
+        <button type="submit">Ingresar</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

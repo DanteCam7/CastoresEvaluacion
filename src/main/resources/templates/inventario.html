@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Vinculación del archivo CSS -->
+</head>
+<body>
+  <h1>Bienvenido al Sistema de Inventario</h1>
+
+  <!-- Contenedor principal -->
+  <div class="button-container">
+    <!-- Grupo de botones principales -->
+    <div class="button-group">
+      <!-- Botón para agregar un nuevo producto (solo visible para Administradores) -->
+      <button th:class="${rol == 'Administrador' ? 'button-87' : 'hidden'}" onclick="window.location.href='/producto/agregar'">Agregar Producto</button>
+
+      <!-- Botón para ver historial (solo visible para Administradores) -->
+      <button th:class="${rol == 'Administrador' ? 'button-87' : 'hidden'}" onclick="window.location.href='/producto/movimiento'">Historial Movimientos</button>
+
+      <!-- Botón para salida de productos (solo visible para Almacenistas) -->
+      <button th:class="${rol == 'Almacenista' ? 'button-87' : 'hidden'}" onclick="window.location.href='/producto/salida'">Salida de Productos</button>
+    </div>
+
+    <!-- Botón para cerrar sesión -->
+    <a href="/logout" class="button-87 logout-button">Cerrar Sesión</a>
+  </div>
+
+  <!-- Mostrar mensaje de error si existe -->
+  <div th:if="${param.error}" class="error-message">
+    [[${param.error}]]
+  </div>
+
+  <!-- Tabla de productos -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Estatus</th>
+        <th th:if="${rol == 'Administrador'}">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="producto : ${productos}">
+        <td th:text="${producto.idProducto}"></td>
+        <td th:text="${producto.nombre}"></td>
+        <td>
+          <!-- Formulario para actualizar cantidad -->
+          <form th:if="${rol == 'Administrador'}" th:action="'/producto/actualizar-cantidad/' + ${producto.idProducto}" method="post" class="update-form">
+            <input type="number" name="cantidad" th:value="${producto.cantidad}" min="0" required />
+            <button type="submit" class="button-42">Actualizar</button>
+          </form>
+          <span th:if="${rol != 'Administrador'}" th:text="${producto.cantidad}"></span>
+        </td>
+        <td>
+          <!-- Mostrar estatus -->
+          <span th:class="${producto.estatus == 1 ? 'green' : 'red'}"
+                th:text="${producto.estatus == 1 ? 'Activo' : 'Inactivo'}">
+          </span>
+        </td>
+        <td>
+          <!-- Botón para cambiar estatus -->
+          <form th:if="${rol == 'Administrador'}" th:action="'/producto/cambiar-estatus/' + ${producto.idProducto}" method="post" style="display: inline;">
+            <button type="submit" class="button-42">
+              <span th:text="${producto.estatus == 1 ? 'Dar de Baja' : 'Dar de Alta'}"></span>
+            </button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

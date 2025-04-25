@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histórico de Movimientos</title>
+  <link rel="stylesheet" href="/css/styles.css"> <!-- Vinculación del archivo CSS -->
+</head>
+<body>
+  <h1>Histórico de Movimientos</h1>
+
+  <!-- Filtros -->
+  <div class="filters">
+    <a href="/inventario" class="button-87">Regresar al Inventario</a>
+    <br>
+    <br>
+    <br>
+    <form method="get" action="/producto/movimiento">
+      <label for="tipo">Filtrar por tipo:</label>
+      <select id="tipo" name="tipo" onchange="this.form.submit()">
+        <option value="">Todos</option>
+        <option value="entrada" th:selected="${tipoSeleccionado == 'entrada'}">Entradas</option>
+        <option value="salida" th:selected="${tipoSeleccionado == 'salida'}">Salidas</option>
+      </select>
+    </form>
+
+    
+  </div>
+
+  <!-- Tabla de movimientos -->
+  <table>
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Tipo</th>
+        <th>Cantidad</th>
+        <th>Nombre de Usuario</th>
+        <th>Fecha y Hora</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="movimiento : ${movimientos}">
+        <td th:text="${movimiento.producto.nombre}"></td>
+        <td th:text="${movimiento.tipo}"></td>
+        <td th:text="${movimiento.cantidad}"></td>
+        <td th:text="${movimiento.usuario.nombre}"></td>
+        <td th:text="${#temporals.format(movimiento.fechaHora, 'yyyy-MM-dd HH:mm:ss')}"></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
